@@ -45,7 +45,7 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(mongoSanitize({ replaceWith: "_" }));
 
-const secret = process.env.SECRET || "thisiscrazy";
+const secret = process.env.SECRET || "thisissparta";
 
 const store = MongoStore.create({
   mongoUrl: dbURL,
