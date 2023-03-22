@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const path = require("path");
+const favicon = require("serve-favicon");
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
@@ -43,9 +44,10 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 app.use(mongoSanitize({ replaceWith: "_" }));
 
-const secret = process.env.SECRET || "thisissparta";
+const secret = process.env.SECRET || "bewarethepassword";
 
 const store = MongoStore.create({
   mongoUrl: dbURL,
